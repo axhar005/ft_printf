@@ -6,22 +6,25 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 17:46:02 by oboucher          #+#    #+#             */
-/*   Updated: 2023/01/23 18:34:54 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:23:04 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int ft_putnbr_base(size_t nbr)
+int ft_putnbr_base(unsigned int nbr, char c)
 {
     char *hex;
-    int i;
+    unsigned int nb;
 
-    hex = "0123456789abcdef";
-    i = 0;
+    if (c == 'X')
+        hex = "0123456789ABCDEF";
+    else
+        hex = "0123456789abcdef";
+    nb = nbr;
 
-    if (nbr / ft_strlen(hex) != 0)
-        ft_putnbr_base(nbr / ft_strlen(hex));
-    ft_putchar_fd(nbr / ft_strlen(hex), 1);
+    if (nb >= 16)
+        ft_putnbr_base(nb / 16, c);
+    ft_putchar_fd(hex[nb % 16], 1);
     return (ft_hex_len(nbr)); 
 }

@@ -6,7 +6,7 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:51:40 by oboucher          #+#    #+#             */
-/*   Updated: 2023/01/23 19:06:55 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:51:02 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,25 @@ int check(va_list arg, char c)
     }
     else if (c == 's')
     {
-        return(ft_putstr_fd(va_arg(arg, int), 1));
+        return(ft_putstr_fd(va_arg(arg, char *), 1));
     }
     else if (c == 'p')
     {
-        return(ft_putnbr_base(va_arg(arg, int), 1));
+        return(ft_putnbr_base(va_arg(arg, int), c));
     }
+    else if (c == 'd' || c == 'i')
+    {
+        return(ft_putnbr_fd(va_arg(arg, int), 1));
+    }
+    else if (c == 'x' || c == 'X')
+    {
+        return(ft_putnbr_base(va_arg(arg, int), c));
+    }
+    else if (c == '%')
+    {
+        return(ft_putchar_fd('%', 1));
+    }
+    return (0);
 }
 
 int ft_printf(const char *str, ...)
@@ -42,12 +55,14 @@ int ft_printf(const char *str, ...)
     {
         if (str[i] == '%')
         {
-            check(arg, str[i+1]);
+            len += check(arg, str[i+1]);
+            i += 2;
         }
-        i++;
+        else 
+            len += ft_putchar_fd(str[i++], 1);
     }
     
     va_end(arg);
     
-    return (0);
+    return (len);
 }

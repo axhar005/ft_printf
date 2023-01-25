@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hex_len.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_unsigned.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 17:53:17 by oboucher          #+#    #+#             */
-/*   Updated: 2023/01/25 13:57:42 by oboucher         ###   ########.fr       */
+/*   Created: 2023/01/25 12:32:21 by oboucher          #+#    #+#             */
+/*   Updated: 2023/01/25 14:51:09 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int ft_hex_len(unsigned int nbr)
+static int ft_numlen(unsigned int n)
 {
-    unsigned int i;
-    unsigned int nb;
+	int i;
 
-    i = 0;
-    if (nbr == 0)
-        return (1);
-    else
-        nb = nbr;
-    while (nb != 0)
+	i = 1;
+	while (n > 9)
+	{
+		n /= 10;
+		i++;
+	}
+	return (i);
+}
+
+int ft_putnbr_unsigned(unsigned int n)
+{
+    int numlen;
+     
+    numlen = ft_numlen(n);
+    if (n > 9)
     {
-        nb /= 16;
-        i++;
+        ft_putnbr_fd(n / 10, 1);
+        n = n % 10;
     }
-    return (i);
+    ft_putchar_fd(n + '0', 1);
+    return (numlen);
 }
