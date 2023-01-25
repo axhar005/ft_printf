@@ -6,7 +6,7 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 13:07:19 by oboucher          #+#    #+#             */
-/*   Updated: 2023/01/25 14:29:08 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/01/25 16:42:46 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main(void)
 {
     int a;
     
-    a = ft_printf("alllmo%d\n", -123455544);
-    ft_printf("%d\n", a);
+    a = ft_printf("123%d\n", 456789);
+    ft_printf("num : %d", a);
     return (0);
 }
