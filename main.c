@@ -6,17 +6,19 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 13:07:19 by oboucher          #+#    #+#             */
-/*   Updated: 2023/01/25 16:42:46 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:24:27 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 #include <stdio.h>
-int main(void)
+
+int	main(void)
 {
-    int a;
-    
-    a = ft_printf("123%d\n", 456789);
-    ft_printf("num : %d", a);
-    return (0);
+	int		a;
+	void	*jjgg;
+	void	*hg;
+
+	ft_printf("%%", 2);
+	return (0);
 }

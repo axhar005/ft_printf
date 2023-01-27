@@ -6,7 +6,7 @@
 #    By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 12:34:33 by oboucher          #+#    #+#              #
-#    Updated: 2023/01/25 12:41:59 by oboucher         ###   ########.fr        #
+#    Updated: 2023/01/27 16:11:11 by oboucher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ LPATH = libft/
 SRC = 	ft_printf.c \
 	ft_hex_len.c \
 	ft_putnbr_base.c \
-	ft_putnbr_unsigned.c
+	ft_putnbr_unsigned.c \
+	ft_putpointer.c
 
 OBJS = $(SRC:%.c=%.o)
 

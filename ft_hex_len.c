@@ -6,26 +6,26 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 17:53:17 by oboucher          #+#    #+#             */
-/*   Updated: 2023/01/25 13:57:42 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:00:26 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-int ft_hex_len(unsigned int nbr)
+int	ft_hex_len(unsigned int nbr)
 {
-    unsigned int i;
-    unsigned int nb;
+	unsigned int	i;
+	unsigned int	nb;
 
-    i = 0;
-    if (nbr == 0)
-        return (1);
-    else
-        nb = nbr;
-    while (nb != 0)
-    {
-        nb /= 16;
-        i++;
-    }
-    return (i);
+	i = 0;
+	if (nbr == 0)
+		return (1);
+	else
+		nb = nbr;
+	while (nb != 0)
+	{
+		nb /= 16;
+		i++;
+	}
+	return (i);
 }

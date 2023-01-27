@@ -1,43 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_unsigned.c                               :+:      :+:    :+:   */
+/*   ft_putpointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 12:32:21 by oboucher          #+#    #+#             */
-/*   Updated: 2023/01/27 15:50:00 by oboucher         ###   ########.fr       */
+/*   Created: 2023/01/27 16:04:56 by oboucher          #+#    #+#             */
+/*   Updated: 2023/01/27 16:16:53 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_numlen(unsigned long n)
+static int	ft_numlen(unsigned long long nbr)
 {
-	int	i;
+	unsigned int	i;
+	unsigned long long	nb;
 
 	i = 0;
-	if (n == 0)
+	if (nbr == 0)
 		return (1);
-	while (n)
+	else
+		nb = nbr;
+	while (nb != 0)
 	{
-		n /= 10;
+		nb /= 16;
 		i++;
 	}
 	return (i);
 }
-
-int	ft_putnbr_unsigned(unsigned int n)
+int	ft_putpointer(unsigned long long nbr)
 {
-	int	len;
+	char			*hex;
+	unsigned long long	nb;
 
-	len = ft_numlen(n);
-	if (n > 9)
-	{
-		ft_putnbr_fd(n / 10, 1);
-		ft_putchar_fd(n % 10 + '0', 1);
-	}
-	else
-		ft_putchar_fd(n + '0', 1);
-	return (len);
+	nb = nbr;
+	hex = "0123456789abcdef";
+	if (nb >= 16)
+		ft_putpointer(nb / 16);
+	ft_putchar_fd(hex[nb % 16], 1);
+	return (ft_numlen(nbr));
 }
