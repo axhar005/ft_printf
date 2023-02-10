@@ -6,7 +6,7 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:04:56 by oboucher          #+#    #+#             */
-/*   Updated: 2023/01/27 16:16:53 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/02/09 23:30:56 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_numlen(unsigned long long nbr)
 {
-	unsigned int	i;
+	unsigned int		i;
 	unsigned long long	nb;
 
 	i = 0;
@@ -29,9 +29,10 @@ static int	ft_numlen(unsigned long long nbr)
 	}
 	return (i);
 }
+
 int	ft_putpointer(unsigned long long nbr)
 {
-	char			*hex;
+	char				*hex;
 	unsigned long long	nb;
 
 	nb = nbr;
