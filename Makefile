@@ -6,13 +6,13 @@
 #    By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 12:34:33 by oboucher          #+#    #+#              #
-#    Updated: 2023/01/27 16:11:11 by oboucher         ###   ########.fr        #
+#    Updated: 2023/02/14 13:20:58 by oboucher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 LIBFT = libft.a
-LPATH = libft/
+LPATH = ft_libft/
 SRC = 	ft_printf.c \
 	ft_hex_len.c \
 	ft_putnbr_base.c \

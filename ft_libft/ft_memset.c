@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 15:06:03 by oboucher          #+#    #+#             */
-/*   Updated: 2023/02/14 13:21:20 by oboucher         ###   ########.fr       */
+/*   Created: 2023/01/06 14:51:34 by oboucher          #+#    #+#             */
+/*   Updated: 2023/01/19 15:22:25 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "ft_libft/libft.h"
-# include <stdarg.h>
+void	*ft_memset(void *b, int c, size_t len)
+{
+	size_t			i;
+	unsigned char	*p;
 
-int	ft_putnbr_base(unsigned int nbr, char c);
-int	ft_hex_len(unsigned int nbr);
-int	ft_printf(const char *str, ...);
-int	ft_putnbr_unsigned(unsigned int n);
-int	ft_putpointer(unsigned long long n);
-
-#endif
+	if (!b)
+		return (NULL);
+	p = b;
+	i = 0;
+	while (i < len)
+	{
+		p[i] = (unsigned char)c;
+		i++;
+	}
+	return (b);
+}

@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 15:06:03 by oboucher          #+#    #+#             */
-/*   Updated: 2023/02/14 13:21:20 by oboucher         ###   ########.fr       */
+/*   Created: 2023/01/11 14:27:57 by oboucher          #+#    #+#             */
+/*   Updated: 2023/01/19 15:30:42 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "ft_libft/libft.h"
-# include <stdarg.h>
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	const unsigned char	*p;
+	size_t				i;
 
-int	ft_putnbr_base(unsigned int nbr, char c);
-int	ft_hex_len(unsigned int nbr);
-int	ft_printf(const char *str, ...);
-int	ft_putnbr_unsigned(unsigned int n);
-int	ft_putpointer(unsigned long long n);
-
-#endif
+	p = (const unsigned char *)s;
+	i = 0;
+	if (!s)
+		return (NULL);
+	while (i < n)
+	{
+		if (p[i] == (unsigned char)c)
+			return ((char *)(p + i));
+		i++;
+	}
+	return (NULL);
+}

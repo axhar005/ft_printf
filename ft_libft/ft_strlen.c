@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 15:06:03 by oboucher          #+#    #+#             */
-/*   Updated: 2023/02/14 13:21:20 by oboucher         ###   ########.fr       */
+/*   Created: 2023/01/06 14:18:56 by oboucher          #+#    #+#             */
+/*   Updated: 2023/01/19 15:23:38 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "ft_libft/libft.h"
-# include <stdarg.h>
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
 
-int	ft_putnbr_base(unsigned int nbr, char c);
-int	ft_hex_len(unsigned int nbr);
-int	ft_printf(const char *str, ...);
-int	ft_putnbr_unsigned(unsigned int n);
-int	ft_putpointer(unsigned long long n);
-
-#endif
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+	{
+		i++;
+	}
+	return (i);
+}

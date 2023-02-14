@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 15:06:03 by oboucher          #+#    #+#             */
-/*   Updated: 2023/02/14 13:21:20 by oboucher         ###   ########.fr       */
+/*   Created: 2023/01/06 13:57:47 by oboucher          #+#    #+#             */
+/*   Updated: 2023/01/17 16:24:56 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "ft_libft/libft.h"
-# include <stdarg.h>
-
-int	ft_putnbr_base(unsigned int nbr, char c);
-int	ft_hex_len(unsigned int nbr);
-int	ft_printf(const char *str, ...);
-int	ft_putnbr_unsigned(unsigned int n);
-int	ft_putpointer(unsigned long long n);
-
-#endif
+int	ft_isalnum(int c)
+{
+	if (ft_isalpha(c) == 1 || ft_isdigit(c) == 1)
+	{
+		return (1);
+	}
+	return (0);
+}

@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 15:06:03 by oboucher          #+#    #+#             */
-/*   Updated: 2023/02/14 13:21:20 by oboucher         ###   ########.fr       */
+/*   Created: 2023/01/19 14:29:10 by oboucher          #+#    #+#             */
+/*   Updated: 2023/01/19 14:44:30 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "ft_libft/libft.h"
-# include <stdarg.h>
+void	ft_lstclear(t_list **lst, void (*del)(void *))
+{
+	t_list	*temp;
 
-int	ft_putnbr_base(unsigned int nbr, char c);
-int	ft_hex_len(unsigned int nbr);
-int	ft_printf(const char *str, ...);
-int	ft_putnbr_unsigned(unsigned int n);
-int	ft_putpointer(unsigned long long n);
-
-#endif
+	if (!lst || !*lst || !del)
+		return ;
+	while (*lst)
+	{
+		temp = (*lst)->next;
+		del((*lst)->content);
+		free(*lst);
+		*lst = temp;
+	}
+	lst = NULL;
+}

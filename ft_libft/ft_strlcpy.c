@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 15:06:03 by oboucher          #+#    #+#             */
-/*   Updated: 2023/02/14 13:21:20 by oboucher         ###   ########.fr       */
+/*   Created: 2023/01/07 14:28:18 by oboucher          #+#    #+#             */
+/*   Updated: 2023/01/17 16:48:40 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "ft_libft/libft.h"
-# include <stdarg.h>
+size_t	ft_strlcpy(char *dest, const char *src, size_t destsize)
+{
+	size_t	src_len;
+	size_t	temp;
 
-int	ft_putnbr_base(unsigned int nbr, char c);
-int	ft_hex_len(unsigned int nbr);
-int	ft_printf(const char *str, ...);
-int	ft_putnbr_unsigned(unsigned int n);
-int	ft_putpointer(unsigned long long n);
-
-#endif
+	src_len = ft_strlen(src);
+	if (destsize == 0)
+		return (src_len);
+	if (!dest)
+		return (0);
+	if (src_len < destsize)
+	{
+		temp = src_len;
+	}
+	else
+	{
+		temp = destsize - 1;
+	}
+	ft_memcpy(dest, src, temp);
+	dest[temp] = '\0';
+	return (src_len);
+}
