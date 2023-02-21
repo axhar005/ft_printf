@@ -6,7 +6,7 @@
 #    By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 12:34:33 by oboucher          #+#    #+#              #
-#    Updated: 2023/02/14 13:20:58 by oboucher         ###   ########.fr        #
+#    Updated: 2023/02/21 15:15:36 by oboucher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,13 +24,13 @@ OBJS = $(SRC:%.c=%.o)
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-all: $(LPATH)$(LIBFT) $(NAME)
+all: libft $(NAME)
 
 $(NAME): $(OBJS)
 	cp $(LPATH)$(LIBFT) $(NAME)
 	ar -rcs $(NAME) $(OBJS)
 
-$(LPATH)$(LIBFT):
+libft:
 	$(MAKE) -C $(LPATH)
 
 clean:
