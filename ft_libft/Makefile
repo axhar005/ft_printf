@@ -6,12 +6,13 @@
 #    By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 12:34:33 by oboucher          #+#    #+#              #
-#    Updated: 2023/02/21 14:45:27 by oboucher         ###   ########.fr        #
+#    Updated: 2023/02/21 23:37:53 by oboucher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #--- LIBRARY NAME ---#
 NAME = libft.a
+CNAME = $(BLUE)~ LIBFT  ${GREEN}
 
 #--- COMMAND VARIABLES ---#
 CC = gcc
@@ -25,16 +26,29 @@ AR = ar rcs
 MK = mkdir -p
 
 #--- COLORS ---#
-GREEN	=	\033[0;32m
+GREEN	=	\033[1;32m
 
-RED		=	\033[0;31m
+RED		=	\033[1;31m
+
+BLUE	=	\033[1;34m
+
+YELLOW	=	\033[1;93m
 
 WHITE	=	\033[0m
+
+#--- BACKGROUD ---#
+BGREEN	=	\033[0;42m
+
+BRED 	=  	\033[0;101m
+
+BYELLOW =	\033[0;103m
+
+BBLUE =	\033[0;44m
 
 #--- INCLUDE ---#
 INCDIR = inc
 
-#--- SOURCE ---#
+#--- SOURCES ---#
 SRCDIR = src
 
 SRCS = ft_atoi.c  ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdegit.c ft_isprint.c \
@@ -45,6 +59,7 @@ SRCS = ft_atoi.c  ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c 
 	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
 VPATH		=    ${SRCDIR}
+
 #--- OBJECTS ---#
 OBJDIR  =   obj
 
@@ -59,7 +74,7 @@ all				: 		$(NAME)
 
 $(NAME)			: 		$(OBJDIR) $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
-	@echo "${GREEN} ${NAME} sucessefully compiled 📁.${WHITE}"
+	@echo "$(CNAME) sucessefully compiled 📁.${WHITE}"
 
 $(OBJDIR)		:
 	@$(MK) $(OBJDIR)
@@ -67,10 +82,10 @@ $(OBJDIR)		:
 clean			:
 	@$(RM) $(OBJS)
 	@$(RM)r $(OBJDIR)
-	
+
 fclean			: 		clean	
 	@$(RM) $(NAME)
-	@echo "${GREEN} ${NAME} object files and executable successfully removed 🗑.${WHITE}"
+	@echo "$(CNAME) files successfully removed 🗑.${WHITE}"
 
 re				: 		fclean all
 

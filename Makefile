@@ -6,12 +6,14 @@
 #    By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 12:34:33 by oboucher          #+#    #+#              #
-#    Updated: 2023/02/21 14:45:12 by oboucher         ###   ########.fr        #
+#    Updated: 2023/02/21 23:45:41 by oboucher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #--- LIBRARY NAME ---#
 NAME = libftprintf.a
+
+CNAME = $(YELLOW)~ PRINTF ${GREEN}
 
 #--- COMMAND VARIABLES ---#
 CC = gcc
@@ -25,16 +27,33 @@ AR = ar rcs
 MK = mkdir -p
 
 #--- COLORS ---#
-GREEN	=	\033[0;32m
+GREEN	=	\033[1;32m
 
-RED		=	\033[0;31m
+RED		=	\033[1;31m
+
+BLUE	=	\033[1;34m
+
+YELLOW	=	\033[1;93m
 
 WHITE	=	\033[0m
+
+RECHO = @echo "$(RED)"
+
+WECHO = @echo "$(WHITE)"
+
+#--- BACKGROUD ---#
+BGREEN	=	\033[0;42m
+
+BRED 	=  	\033[0;101m
+
+BYELLOW =	\033[0;103m
+
+BBLUE =	\033[0;94m
 
 #--- INCLUDE ---#
 INCDIR = inc
 
-#--- SOURCE, PATH ---#
+#--- SOURCE ---#
 LIBFT = libft.a
 
 LDIR = ft_libft/
@@ -49,7 +68,7 @@ SRCS = 	ft_printf.c \
 
 VPATH	=	${SRCDIR}
 
-#--- OBJECT, PATH ---#
+#--- OBJECT ---#
 OBJDIR  =   obj
 
 OBJS = $(addprefix ${OBJDIR}/, ${SRCS:.c=.o})
@@ -58,17 +77,28 @@ OBJS = $(addprefix ${OBJDIR}/, ${SRCS:.c=.o})
 ${OBJDIR}/%.o : %.c
 	@${CC} ${CFLAGS} -I${INCDIR} -I. -c $< -o $@
 	
-all				: 		libft $(NAME)
+all				: 	 	art libft $(NAME)
 	
 $(NAME)			: 		$(OBJDIR) $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
-	@echo "${GREEN} ${NAME} sucessefully compiled 📁.${WHITE}"
+	@echo "$(CNAME) sucessefully compiled 📁.${WHITE}"
 
 $(OBJDIR)		:
 	@$(MK) ${OBJDIR}
 
-libft:
+libft			:
 	@$(MAKE) -C $(LDIR)
+
+art 			:
+	clear
+	$(RECHO)"              ######      "
+	@echo	"           ############   "
+	@echo	"          ##############  "
+	@echo	"         #######  ####### "
+	$(WECHO)"         #######  ####### "
+	@echo	"          ##############  "
+	@echo	"           ############   "
+	@echo	"              ######      \n"
 
 clean			:
 	@$(RM) $(OBJS)
@@ -78,7 +108,7 @@ clean			:
 fclean			: 		clean	
 	@$(RM) $(NAME)
 	@$(MAKE) -C $(LDIR) fclean
-	@echo "${GREEN} ${NAME} object files and executable successfully removed 🗑.${WHITE}"
+	@echo "$(CNAME) object files and executable successfully removed 🗑.${WHITE}"
 
 re				: 		fclean all
 
